@@ -14,5 +14,5 @@ Pyorch List
 2020-07-09-3 : MNIST CNN  
 2020-07-09-4 : MNIST CNN -2   
 
-2020-07-13-1 : For Visdom
+2020-07-13-1 : For Visdom   
 2020-07-14-1 : MNIST CNN with Visdom
