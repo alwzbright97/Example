@@ -1,7 +1,7 @@
 # Example
 For exercise
 
-Pytorch List
+Pyorch List
 ----------------------
 
 2020-07-08-1 : MNIST Softmax Regression   
