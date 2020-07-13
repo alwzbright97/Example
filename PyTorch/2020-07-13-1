@@ -1,0 +1,452 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# For Visdom"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import torch\n",
+    "import torch.nn as nn\n",
+    "\n",
+    "import torchvision\n",
+    "import torchvision.datasets as dsets"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "Setting up a new session...\n"
+     ]
+    }
+   ],
+   "source": [
+    "import visdom\n",
+    "vis = visdom.Visdom()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Text"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'window_38a74f61115b60'"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "vis.text(\"Helo, world\", env=\"main\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "     env=main\n",
+    "코드는 있어도 되고 없어도 상관없다. 나중에 한번에 모든 창을 닫을 때 쉽게 사용 가능"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Image"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'window_38a74f621d6cb8'"
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a=torch.randn(3,200,200)\n",
+    "vis.image(a)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Files already downloaded and verified\n"
+     ]
+    }
+   ],
+   "source": [
+    "MNIST = dsets.MNIST(root=\"/tmp/pycharm_project/MNIST_data\",train=True,transform=torchvision.transforms.ToTensor(), download=True)\n",
+    "cifar10 = dsets.CIFAR10(root=\"/tmp/pycharm_project/cifar10\",train = True, transform=torchvision.transforms.ToTensor(),download=True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### CiFAR10"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "torch.Size([3, 32, 32])\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "'window_38a74f6693d9b2'"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "data = cifar10.__getitem__(0)\n",
+    "print(data[0].shape)\n",
+    "vis.images(data[0], env=\"main\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### MNIST"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "torch.Size([1, 28, 28])\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "'window_38a74f674126b2'"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "data = MNIST.__getitem__(0)\n",
+    "print(data[0].shape)\n",
+    "vis.images(data[0], env=\"main\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "###  Check dataset"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data_loader = torch.utils.data.DataLoader(dataset = MNIST,\n",
+    "                                         batch_size = 32,\n",
+    "                                         shuffle = False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "torch.Size([32, 1, 28, 28])\n"
+     ]
+    }
+   ],
+   "source": [
+    "for num, value in enumerate(data_loader):\n",
+    "    value = value[0]\n",
+    "    print(value.shape)\n",
+    "    vis.images(value)\n",
+    "    break"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Line Plot\n",
+    "\n",
+    "X값을 넣지 않으면 무조건 X축은 0~1로 설정이 된다,"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Y_data = torch.randn(5)\n",
+    "plt = vis.line (Y=Y_data)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "X_data = torch.Tensor([1,2,3,4,5])\n",
+    "plt = vis.line(Y=Y_data, X=X_data)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Line update"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'window_38a74f69727da8'"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "Y_append = torch.randn(1)\n",
+    "X_append = torch.Tensor([6])\n",
+    "\n",
+    "vis.line(Y=Y_append, X=X_append, win=plt, update='append')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Multiple Line on single windows\n",
+    "\n",
+    "라인을 두 개를 그리려면 Y와 똑같은 shape을 가지고 있는 index 값을 넣어 줘야 한다."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "torch.Size([10])\n",
+      "torch.Size([10, 1])\n",
+      "torch.Size([10, 2])\n"
+     ]
+    }
+   ],
+   "source": [
+    "num = torch.Tensor(list(range(0,10)))\n",
+    "print(num.shape)\n",
+    "num = num.view(-1,1)\n",
+    "print(num.shape)\n",
+    "num = torch.cat((num,num),dim=1)\n",
+    "print(num.shape)\n",
+    "\n",
+    "plt = vis.line(Y=torch.randn(10,2), X = num)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Line info"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "plt = vis.line(Y=Y_data, X=X_data, opts = dict(title='Test', showlegend=True))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "plt = vis.line(Y=Y_data, X=X_data, opts = dict(title='Test', legend = ['1번'],showlegend=True))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "plt = vis.line(Y=torch.randn(10,2), X = num, opts=dict(title='Test', legend=['1번','2번'],showlegend=True))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Make function for update line\n",
+    "\n",
+    "업데이트 할     \n",
+    "플롯의 이름 : loss_plot    \n",
+    "로스의 값 : loss_value    \n",
+    "그 값이 어디에 들어갈 지 (X값, 즉 index를 의미) : num"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def loss_tracker(loss_plot, loss_value, num):\n",
+    "    '''num, loss_value, are Tensor'''\n",
+    "    vis.line(X=num,\n",
+    "             Y=loss_value,\n",
+    "             win = loss_plot,\n",
+    "             update='append'\n",
+    "             )"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "plt = vis.line(Y=torch.Tensor(1).zero_())\n",
+    "\n",
+    "for i in range(500):\n",
+    "    loss = torch.randn(1) + i\n",
+    "    loss_tracker(plt, loss, torch.Tensor([i]))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Close the window"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "''"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "vis.close(env=\"main\")"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
