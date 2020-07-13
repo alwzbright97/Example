@@ -4,8 +4,8 @@ For exercise
 PyTorch List
 ---------------------
 
-원본 출처 : <https://github.com/deeplearningzerotoall/PyTorch>
-
+원본 출처 : <https://github.com/deeplearningzerotoall/PyTorch>    
+학습을 위해 위의 링크의 예제를 직접 실행시켜본 파일입니다.
 
 2020-07-08-1 : MNIST Softmax Regression   
 2020-07-08-2 : Single Layer Perceptron    
