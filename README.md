@@ -1,8 +1,11 @@
 # Example
 For exercise
 
-Pyorch List
-----------------------
+PyTorch List
+---------------------
+
+원본 출처 : <https://github.com/deeplearningzerotoall/PyTorch>
+
 
 2020-07-08-1 : MNIST Softmax Regression   
 2020-07-08-2 : Single Layer Perceptron    
