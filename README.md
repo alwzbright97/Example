@@ -21,5 +21,5 @@ PyTorch List
 2020-07-14-1 : MNIST CNN with Visdom
 
 
-2020-07-30-1 : CNN Model 50% Accuracy 
+2020-07-30-1 : CNN Model 50% Accuracy   
               & All Conv kernel_size=3, stride=1, padding=1
