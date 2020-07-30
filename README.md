@@ -26,7 +26,7 @@ PyTorch List
 Dropout 0.5, Input data = (1000, 4, 257, 382)    
 &rightarrow; Overfitting
 
-#### 2020-07-30-2 : CNN Model - 
+#### 2020-07-30-2 : CNN Model - Bad
 & All Conv kernel_size=3, stride=1, padding=1, Max Pooling, Data normalization(Min-Max, Z-score), Log Scale,   
 Non Dropout    
 &rightarrow; Overfitting
