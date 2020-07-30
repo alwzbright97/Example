@@ -24,12 +24,12 @@ PyTorch List
 #### 2020-07-30-1 : CNN Model 50% Accuracy   
 & All Conv kernel_size=3, stride=1, padding=1, Max Pooling, Data normalization(Min-Max, Z-score), Log Scale,   
 Dropout 0.5, Input data = (1000, 4, 257, 382)    
-&leftarrow; Overfitting
+&rightarrow; Overfitting
 
 #### 2020-07-30-2 : CNN Model - 
 & All Conv kernel_size=3, stride=1, padding=1, Max Pooling, Data normalization(Min-Max, Z-score), Log Scale,   
-Non Dropout
-&leftarrow; Overfitting
+Non Dropout    
+&rightarrow; Overfitting
 
 #### 2020-07-30-3 : CNN Model
 Dropout 0.5, Input data = (1000, 2, 514, 382)   
