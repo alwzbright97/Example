@@ -32,4 +32,5 @@ Non Dropout
 &rightarrow; Overfitting
 
 #### 2020-07-30-3 : CNN Model
+& All Conv kernel_size=3, stride=1, padding=1, *Max Pooling*,
 Dropout 0.5, Input data = (1000, 2, 514, 382)   
