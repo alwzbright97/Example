@@ -3,6 +3,7 @@ Solution
 
 
 [Multi-Class(Label) Classification](https://wordbe.tistory.com/entry/ML-Cross-entropyCategorical-Binary%EC%9D%98-%EC%9D%B4%ED%95%B4)   
+[Save Model](https://honeyjamtech.tistory.com/39)   
 [AutoEncoder](https://wjddyd66.github.io/pytorch/Pytorch-AutoEncoder/)    
 [AutoEncoder](https://debuggercafe.com/autoencoder-neural-network-application-to-image-denoising/)
 [wikidocs](https://wikidocs.net/3413) : Deep Learning 이론과 실습    
@@ -17,8 +18,9 @@ Solution
 [Labeling tools](https://hoya012.github.io/blog/Tutorials-of-Object-Detection-Using-Deep-Learning-labeling/)     
 [Labeling tools2](https://honeycomb-makers.tistory.com/14)   
 [Unet&Segnet](https://github.com/trypag/pytorch-unet-segnet)   
-[SOTA?](https://paperswithcode.com/sota/semantic-segmentation-on-cityscapes)    
-
+[SOTA ?](https://paperswithcode.com/sota/semantic-segmentation-on-cityscapes)      
+[VAD ?](https://github.com/SIP-Lab/CNN-VAD)  
+[VAD](https://github.com/jtkim-kaist/VAD)   
 [GAN](https://dreamgonfly.github.io/blog/gan-explained/) : Generative Adversarial Network (Make a fake image)
 
 
@@ -26,6 +28,10 @@ Solution
 [more...](https://kuklife.tistory.com/121?category=872135)
 
 
+[ROC Curve, AUC Curve](https://losskatsu.github.io/machine-learning/stat-roc-curve/#)  
+[ROC, AUC 2](https://nittaku.tistory.com/297)   
+[F1 score](https://nittaku.tistory.com/295?category=745644)   
+[Evaluation](https://rosypark.tistory.com/76)   
 
 
 Keyword : Reduce noise CNN    
@@ -35,112 +41,11 @@ Paper 2 : 완전 합성곱 신경망을 활용한 드론 비행음 및 바람소
 -------------------------------------
 [모두의 연구소](https://modulabs-biomedical.github.io/)   
 [라온피플](http://blog.naver.com/PostView.nhn?blogId=laonple&logNo=220478250374&parentCategoryNo=&categoryNo=16&viewDate=&isShowPopularPosts=false&from=postView)   
-[IntFlow](https://github.com/intflow)   
+[IntFlow](https://github.com/intflow)  
+[News](http://www.ciokorea.com/news/157473)
 
 
-```python
-import numpy as np
-from scipy import io
-import matplotlib.pyplot as plt
-```
-
-
-```python
-PATH = '../compu/data/'
-filename = 'dataset_1.mat'
-mat_file = io.loadmat(PATH + filename)
-filename = 'angle.mat'
-angle_file = io.loadmat(PATH + filename)
-```
-
-
-```python
-S_left = mat_file['S_left']
-S_right = mat_file['S_right']
-clean_left = mat_file['clean_left']
-clean_right = mat_file['clean_right']
-
-phi = angle_file['phi'][0:1000]
-```
-
-
-```python
-S_left = np.transpose(S_left, (2, 0, 1))
-S_right = np.transpose(S_right, (2, 0, 1))
-clean_left = np.transpose(clean_left, (2, 0, 1))
-clean_right = np.transpose(clean_right, (2, 0, 1))
-```
-
-
-```python
-S_left = np.reshape(S_left, (1000, 1, 257, 382))
-S_right = np.reshape(S_right, (1000, 1, 257, 382))
-clean_left = np.reshape(clean_left, (1000, 1, 257, 382))
-clean_right = np.reshape(clean_right, (1000, 1, 257, 382))
-```
-
-
-```python
-S_left = np.log10(S_left + 1)
-S_right = np.log10(S_right + 1)
-clean_left = np.log10(clean_left + 1)
-clean_right = np.log10(clean_right + 1)
-```
-
-
-```python
-
-```
-
-
-```python
-
-```
-
-
-```python
-index = np.random.randint(0, 1000)
-print(index)
-plt.imshow(S_left[index,0,])
-```
-
-
-```python
-plt.imshow(clean_left[index,0,])
-```
-
-
-```python
-k = clean_left[index,0,].copy()
-```
-
-
-```python
-plt.imshow(clean_left[index,0,])
-```
-
-
-```python
-k.mean() * 1.2
-```
-
-
-```python
-k[k >= (k.mean()* 2)] = 1
-k[k < (k.mean()* 2)] = 0
-```
-
-
-```python
-plt.imshow(k)
-```
-
-
-```python
-(k[k!=0] == 1.).all()
-```
-
-
-```python
-
-```
+--------------------------------------
+[scikit-learn](https://losskatsu.github.io/machine-learning/sklearn/#%EA%B0%80%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%9E%9C%EB%8D%A4%EC%9C%BC%EB%A1%9C-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0)   
+[pycaret](https://medium.com/@john_analyst/pycaret-%EC%BD%94%EB%93%9C-%EB%AA%87-%EC%A4%84%EB%A1%9C-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0-18a8de4b6024)   
+[DACON](https://dacon.io/)
