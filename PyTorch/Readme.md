@@ -23,7 +23,7 @@ Solution
 [VAD](https://github.com/jtkim-kaist/VAD)   
 [GAN](https://dreamgonfly.github.io/blog/gan-explained/) : Generative Adversarial Network (Make a fake image)
 
-
+[Reinforcement learning](https://brunch.co.kr/@kakao-it/144)    
 
 [more...](https://kuklife.tistory.com/121?category=872135)
 
