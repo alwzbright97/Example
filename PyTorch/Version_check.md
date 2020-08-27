@@ -427,9 +427,7 @@
     | Processes:                                                       GPU Memory |
     |  GPU       PID   Type   Process name                             Usage      |
     |=============================================================================|
-    |    0     27522      C   ...orks/anaconda3/envs/kdh_env/bin/python3  1531MiB |
-    |    3     27522      C   ...orks/anaconda3/envs/kdh_env/bin/python3  5995MiB |
-    |    6      6663      C   /compuworks/anaconda3/bin/python           10749MiB |
+    |                                                                             |
     +-----------------------------------------------------------------------------+
 
 
