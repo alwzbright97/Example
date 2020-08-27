@@ -24,8 +24,10 @@ Solution
 [GAN](https://dreamgonfly.github.io/blog/gan-explained/) : Generative Adversarial Network (Make a fake image)
 
 [Reinforcement learning](https://brunch.co.kr/@kakao-it/144)    
+[Snake game](https://www.secmem.org/blog/2020/02/08/snake-dqn/)   
 
-[more...](https://kuklife.tistory.com/121?category=872135)
+[more...](https://kuklife.tistory.com/121?category=872135)   
+
 
 
 [ROC Curve, AUC Curve](https://losskatsu.github.io/machine-learning/stat-roc-curve/#)  
