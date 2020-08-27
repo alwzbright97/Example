@@ -50,6 +50,9 @@ Paper 2 : 완전 합성곱 신경망을 활용한 드론 비행음 및 바람소
 --------------------------------------
 [scikit-learn](https://losskatsu.github.io/machine-learning/sklearn/#%EA%B0%80%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%9E%9C%EB%8D%A4%EC%9C%BC%EB%A1%9C-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0)   
 [scikit-learn 2](https://lsjsj92.tistory.com/542)   
+(http://machinelearningkorea.com/2019/09/25/lightgbm%EC%9D%98-%ED%95%B5%EC%8B%AC%EC%9D%B4%ED%95%B4/)   
+(https://nurilee.com/lightgbm-definition-parameter-tuning/)   
+(https://lsjsj92.tistory.com/548)    
 [pycaret](https://medium.com/@john_analyst/pycaret-%EC%BD%94%EB%93%9C-%EB%AA%87-%EC%A4%84%EB%A1%9C-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0-18a8de4b6024)   
 [DACON](https://dacon.io/)
 
