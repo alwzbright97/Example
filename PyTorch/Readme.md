@@ -56,11 +56,3 @@ Paper 2 : 완전 합성곱 신경망을 활용한 드론 비행음 및 바람소
 [pycaret](https://medium.com/@john_analyst/pycaret-%EC%BD%94%EB%93%9C-%EB%AA%87-%EC%A4%84%EB%A1%9C-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0-18a8de4b6024)   
 [DACON](https://dacon.io/)
 
-
----------------------------------------
-Not for ML    
-(https://github.com/precice/precice/wiki/Get-preCICE)  
-(https://www.openfoam.com/download/install-binary-linux.php)   
-(https://github.com/precice/systemtests/blob/develop/solvers/Dockerfile.openfoam)   
-(https://docs.docker.com/engine/install/ubuntu/)   
-(https://hub.docker.com/r/precice/openfoam-adapter-ubuntu1804.home.petsc-develop/tags)    
