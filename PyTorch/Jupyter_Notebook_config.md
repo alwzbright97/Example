@@ -1,9 +1,9 @@
 Jupyter Notebook Configuration(설정)
 ======================
------------------------------------------------
+
 
 ## Change Font (폰트 변경하기)
-------------------------------------------------
+
 ```
 $ jupyter notebook --generate-config
 $ cd ~/.jupyter/
